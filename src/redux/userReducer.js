@@ -1,4 +1,6 @@
-initialState = {
+import axios from 'axios'
+
+const initialState = {
     user: {},
     inLoggedIn: false
 }
