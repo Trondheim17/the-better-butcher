@@ -1,20 +1,20 @@
-CREATE TABLE "users" (
-	"user_id" SERIAL NOT NULL,
-	"username" VARCHAR(255) NOT NULL UNIQUE,
-	"email" VARCHAR(60) NOT NULL,
-	"hash_pass" VARCHAR(5000),
-	"name" VARCHAR(255),
-	"ship_to_address" VARCHAR(75),
-	"ship_to_city" VARCHAR(50),
-	"ship_to_state" VARCHAR(2),
-	"ship_to_country" VARCHAR(2),
-	"ship_to_zip" INT(5),
-	"bill_to_address" VARCHAR(75),
-	"bill_to_city" VARCHAR(50),
-	"bill_to_state" VARCHAR(2),
-	"bill_to_country" VARCHAR(2),
-	"bill_to_zip" INT(5),
-	CONSTRAINT "users_pk" PRIMARY KEY ("user_id")
+CREATE TABLE IF NOT EXISTS users (
+	user_id SERIAL PRIMARY KEY NOT NULL,
+	username VARCHAR(255) NOT NULL UNIQUE,
+	email VARCHAR(60) NOT NULL,
+	password VARCHAR (5000),
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	ship_to_address VARCHAR(75),
+	ship_to_city VARCHAR(50),
+	ship_to_state VARCHAR(2),
+	ship_to_country VARCHAR(2),
+	ship_to_zip INTEGER,
+	bill_to_address VARCHAR(75),
+	bill_to_city VARCHAR(50),
+	bill_to_state VARCHAR(2),
+	bill_to_country VARCHAR(2),
+	bill_to_zip INTEGER
 );
 
 CREATE TABLE "cart" (
