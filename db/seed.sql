@@ -17,31 +17,101 @@ CREATE TABLE IF NOT EXISTS users (
 	bill_to_zip INTEGER
 );
 
-CREATE TABLE "cart" (
-	"cart_id" INTEGER,
-	"user_id" INTEGER,
-	"active" BOOLEAN NOT NULL,
-	"date" SERIAL NOT NULL,
-	CONSTRAINT "cart_pk" PRIMARY KEY ("cart_id")
+CREATE TABLE IF NOT EXISTS items (
+	cut_id SERIAL PRIMARY KEY NOT NULL,
+	api_cut_id INTEGER,
+	price_per_pound NUMERIC,
+	cut_name VARCHAR(50),
+	cut_description TEXT,
+	cut_image TEXT
 );
 
-CREATE TABLE "items" (
-	"item_id" SERIAL PRIMARY KEY NOT NULL,
-	CONSTRAINT "items_pk" PRIMARY KEY ("item_id")
+CREATE TABLE IF NOT EXISTS cart (
+	cart_id SERIAL PRIMARY KEY,
+	user_id INT REFERENCES users(user_id),
+	active BOOLEAN NOT NULL,
+	date TIMESTAMP
 );
 
-CREATE TABLE "cart_item" (
-	"cart_item_id" INTEGER NOT NULL,
-	"item_id" INT NOT NULL,
-	"cart_id" INT NOT NULL,
-	"qty" INT NOT NULL,
-	CONSTRAINT "cart_item_pk" PRIMARY KEY ("cart_item_id")
+CREATE TABLE IF NOT EXISTS cart_item (
+	cart_item_id SERIAL PRIMARY KEY,
+	cut_id INT REFERENCES items(cut_id),
+	cart_id INT REFERENCES cart(cart_id),
+	qty INT NOT NULL
 );
 
-ALTER TABLE "cart" ADD CONSTRAINT "cart_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("user_id");
+INSERT INTO items (api_cut_id, price_per_pound, cut_name, cut_description, cut_image)
+VALUES
+(2439, 5.59, 'Bottom Round Roast', 'Great value and very lean. Best for roasting or slow-cooking and slicing thin.', 'embed.widencdn.net/img/beef/ihk6cfbdwk/exact/Bottom Round Roast.psd?u=7fueml'),
+(2440, 3.49, 'Chuck Eye Roast', 'This cut is a good value with loads of beef flavor. Roast to highlight natural tenderness and flavor.', 'embed.widencdn.net/img/beef/gszl7lokwv/exact/Americas Beef Roast.psd?u=7fueml'),
+(2441, 5.99, 'Eye of Round Roast', 'A lean, flavorful cut often used for roast beef at the deli. Can be roasted or slow-cooked at home for an everyday meal.', 'embed.widencdn.net/img/beef/65dqjurwie/exact/Eye of Round Roast.psd?u=7fueml'),
+(2442, 6.59, 'Sirloin Tip Roast', 'This boneless, lean cut is great value. Best when roasted and carved into thin slices.', 'embed.widencdn.net/img/beef/5yu0ksvnvf/exact/Sirloin Tip Roast_Trimmed.psd?u=7fueml'),
+(2443, 11.99, 'Tri-Tip Roast', 'Boneless and fairly tender with full flavor. Roast or grill then slice across the grain.', 'embed.widencdn.net/img/beef/qmtvuxiocr/exact/Tri-Tip_Denuded.psd?u=7fueml'),
+(2444, 10.99, 'Ribeye Roast', 'Savory and fine-textured with generous marbling. A classic holiday roast.', 'embed.widencdn.net/img/beef/0vdh0b5rpt/exact/Ribeye Roast_Lip-On.psd?u=7fueml'),
+(2446, 17.99, 'Chateaubriand Tenderloin Roast', 'The most tender beef roast that is well known for being lean and succulent. Easy to carve with its fine texture. ', 'embed.widencdn.net/img/beef/wa7zkwrlc1/exact/Tenderloin Roast_Chateaubriand.psd?u=7fueml'),
+(2447, 6.34, 'Bottom Round Steak', 'A good everyday cut, boneless and lean. Marinate and broil or grill and slice thin.', 'embed.widencdn.net/img/beef/minxlotxnr/exact/Bottom Round Steak.psd?u=7fueml'),
+(2448, 5.99, '7-Bone Chuck Steak', 'Identified by the 7-shaped bone it contains. Slow-cook to bring out its full, savory flavor.', 'embed.widencdn.net/img/beef/ykx2udurwn/exact/7-Bone Chuck Steak.psd?u=7fueml'),
+(2449, 5.99, 'Chuck Arm Steak', 'Good value and ideal to slow-cook for the most tender finish.', 'embed.widencdn.net/img/beef/vvjpeezcw6/exact/Arm Steak.psd?u=7fueml'),
+(2450, 6.99, 'Blade Chuck Steak', 'A relatively inexpensive cut with loads of beef flavor. Marinate before grilling.', 'embed.widencdn.net/img/beef/os8z1ojhtj/exact/Blade Chuck Steak.psd?u=7fueml'),
+(2451, 15.99, 'Chuck Eye Steak (Delmonico)', 'A low-cost alternative to the Rib Eye Steak. A tender and savory cut great for grilling.', 'embed.widencdn.net/img/beef/ygj1gscmdm/exact/Chuck Eye Steak_Delmonico Steak.psd?u=7fueml'),
+(2452, 3.79, 'Chuck Tender Steak', 'Lean cut that resembles a Tenderloin Steak but is not as tender. Slow-cook or tenderize with a marinade before grilling.', 'embed.widencdn.net/img/beef/dcgfobkwfa/exact/Chuck Tender Steak.psd?u=7fueml'),
+(2456, 1.59, 'Cubed Steak', 'Pre-tenderized, this thin cut is a great value for everyday meals. Skillet cook for best results.', 'embed.widencdn.net/img/beef/ougjonb7h2/exact/Cubed Steak.jpg?u=7fueml'),
+(2457, 7.89, 'Eye of Round Steak', 'A tremendous value cut that is lean and boneless. Ideal for marinating then grilling  or skillet cooking. ', 'embed.widencdn.net/img/beef/ug0ozs7grq/exact/Eye of Round Steak.psd?u=7fueml'),
+(2458, 9.89, 'Flank Steak', 'Lean and boneless with lots of intense beef flavor. Best when marinated and grilled or sliced thin and stir-fried.', 'embed.widencdn.net/img/beef/gkehnb3pit/exact/Flank Steak_Trimmed.psd?u=7fueml'),
+(2465, 12.99, 'Tri-Tip Steak', 'Boneless and fairly tender with full flavor. Grill then slice across the grain.', 'embed.widencdn.net/img/beef/nvkvb3d9ox/exact/Tri-Tip Steak_Defatted_1185D.psd?u=7fueml'),
+(2466, 14.39, 'Porterhouse Steak', 'Big flavor and often big enough for two. Simply season this sublime combination of Strip and Tenderloin for the grill or oven.', 'embed.widencdn.net/img/beef/cwebwsnzbu/exact/Porterhouse Steak.psd?u=7fueml'),
+(2468, 18.29, 'Ribeye Steak', 'One of the most popular and tender cuts with marbling that adds flavor. Simply season and grill.', 'embed.widencdn.net/img/beef/ng96sbyljl/exact/Ribeye Steak_Lip-on.psd?u=7fueml'),
+(2473, 13.99, 'Ribeye Filet', 'An unquestionably tender but smaller Ribeye Steak. Perfectly portioned for the grill.', 'embed.widencdn.net/img/beef/umthiboihj/exact/Ribeye Filet.psd?u=7fueml'),
+(2475, 19.89, 'Coulotte Steak', 'With plenty of marbling, this is a juicy and savory steak. Easy to prepare on the grill.', 'embed.widencdn.net/img/beef/siw869jpri/exact/Coulotte Top Sirloin Cap Steak.psd?u=7fueml'),
+(2477, 7.69, 'Brisket Flat Half', 'The leaner half of the whole Brisket also known also as the “first cut,” this full-flavored meat can be sliced or shredded.', 'embed.widencdn.net/img/beef/j14ri9mycg/exact/Short Rib Osso Bucco.jpg?u=7fueml'),
+(2478, 4.99, '7-Bone Chuck Roast', 'Identified by the 7-shaped bone it contains. Slow-cook to bring out its full, savory flavor.', 'embed.widencdn.net/img/beef/ek10vrcksq/exact/7-Bone Chuck Roast.psd?u=7fueml'),
+(2480, 6.99, 'Blade Chuck Roast', 'A relatively inexpensive cut with loads of beef flavor. Moist and tender when slow-cooked.', 'embed.widencdn.net/img/beef/mqxkv3nxey/exact/Blade Chuck Roast.psd?u=7fueml'),
+(2481, 5.99, 'Cross Rib Roast', 'A savory cut for roasting or slow-cooking to achieve a tender finish.', 'embed.widencdn.net/img/beef/s9e2w4qykx/exact/Chuck Cross Rib Roast_Boneless_Tied.psd?u=7fueml'),
+(2482, 3.79, 'Chuck Tender Roast', 'Lean roast that requires slow-cooking to tenderize.', 'embed.widencdn.net/img/beef/r1jfnjces5/exact/Chuck Tender (Mock Tender) Roast.jpg?u=7fueml'),
+(2484, 5.94, 'Bottom Round Rump Roast', 'Boneless and lean and best for slow-cooking.', 'embed.widencdn.net/img/beef/7iuxl5lvwo/exact/Rump Roast.jpg?u=7fueml'),
+(2486, 4.49, 'Ground Beef', 'Versatility and rich flavor make it ideal for burgers, tacos or wraps. Perfect for breakfast, lunch and everything in-between.', 'embed.widencdn.net/img/beef/4hh1pywcnj/exact/Grind_Fine_85.psd?u=7fueml'),
+(2488, 3.39, 'Back Ribs', 'A great value and beef’s signature ribs for the BBQ, this  flavorful cut is great with a dry rub on  the grill.', 'embed.widencdn.net/img/beef/1m4grjt6lt/exact/Back Ribs.psd?u=7fueml'),
+(2500, 10.98, 'Ranch Steak', 'Affordable, lean and versatile. Good for grilling or broiling.', 'embed.widencdn.net/img/beef/4zddc8i3wx/exact/Ranch Steak.psd?u=7fueml'),
+(2502, 3.99, 'Flat Iron Steak', 'Extremely tender, well-marbled and flavorful and great for grilling. Cut from the Top Blade.', 'embed.widencdn.net/img/beef/rnsfu27fjk/exact/Flat Iron Steak.psd?u=7fueml'),
+(2592, 17.6, 'Coulotte Roast', 'With plenty of marbling, this is a juicy and savory roast. Best roasted in the oven or smoked slowly on the grill.', 'embed.widencdn.net/img/beef/wc76jw30zt/exact/Coulotte.psd?u=7fueml'),
+(2593, 7.49, 'Denver Steak', 'Cut from the center of the Under Blade, these steaks are extremely tender with a good amount of marbling and beef flavor.', 'embed.widencdn.net/img/beef/gqo4he8t3w/exact/Denver Steak.psd?u=7fueml'),
+(2608, 8.98, 'Beef for Stir-Fry', 'Weeknight dinner ingredient that’s easy to prepare, whether it’s for fajitas, salad or stir-fry.', 'embed.widencdn.net/img/beef/otww9pdpdf/exact/Beef for Stir-Fry_135C.psd?u=7fueml'),
+(2609, 3.59, 'Chuck Short Ribs, Boneless', 'A crowd favorite, known for their richness and meatiness. Flavorful, moist and tender when slow-cooked.', 'embed.widencdn.net/img/beef/2ylqw25q3f/exact/Short Ribs_Boneless.psd?u=7fueml'),
+(2751, 1.89, 'Beef Bones', 'Strong beef flavor. Roast before adding to a broth.', 'embed.widencdn.net/img/beef/g7jyah2myx/exact/FreshPhoto_Bones_MarrowBones_psd.psd?u=7fueml'),
+(2752, 10.89, 'Chuck Eye Roll', 'Separated from the Under Blade section of the Chuck Roll.', 'embed.widencdn.net/img/beef/h0vzw6ayun/exact/Chuck Eye Roll.psd?u=7fueml'),
+(2753, 3.79, 'Chuck Tender', 'The name of this cut comes from its shape—long and narrow with a pointed tip, similar to a Tenderloin—rather than its tenderness.', 'embed.widencdn.net/img/beef/jj4lguhyrd/exact/Chuck Tender (Mock Tender)_116B.jpg?u=7fueml'),
+(2754, 2.89, 'Chuck Roll', 'This large, boneless cut comes from between the ribs and backbone. Contains a mix of tender and somewhat tough muscles.', 'embed.widencdn.net/img/beef/czfvpgkjbn/exact/Chuck Tender.psd?u=7fueml'),
+(2761, 1.13, 'Petite Sirloin Steak', 'A great value steak. Grill after marinating.', 'embed.widencdn.net/img/beef/3hnwfntdgn/exact/Underblade_Center Cut.psd?u=7fueml'),
+(2772, 13.99, 'T-Bone Steak', 'Smaller than the Porterhouse, but delivers same optimal tenderness and satisfying flavor – all in a lean package that’s ready to be grilled.', 'embed.widencdn.net/img/beef/sospeur0gf/exact/Strip Loin Steak_Bone In.jpg?u=7fueml'),
+(2775, 8.99, 'Top Sirloin Steak', 'A flavorful cut that’s versatile and juicy. Great served as a steak or cut into kabobs.', 'embed.widencdn.net/img/beef/0eyusiupgy/exact/Tenderloin_Full_Side Muscle Off_Defatted_190.psd?u=7fueml'),
+(2790, 5.99, 'Bottom Round (Gooseneck)', 'This lean, economical cut comes from the outside of the rear leg. It is generally best when braised.', 'embed.widencdn.net/img/beef/rajnv2jiku/exact/Ribeye Roll_Lip-on.tif?u=7fueml'),
+(2791, 5.99, 'Eye of Round', 'This extremely lean cut is shaped similar to a Tenderloin, but is much less tender. It is often packaged as a roast or steaks.', 'embed.widencdn.net/img/beef/wlnznmr0i3/exact/Bottom (Gooseneck) Round_170.psd?u=7fueml'),
+(2813, 7.79, 'Chuck Neck Roast', 'Rich in flavor and tender after slow-cooking.', 'embed.widencdn.net/img/beef/cp2entvpdf/exact/Beef Special Trim_139_DSC_2076.psd?u=7fueml'),
+(2814, 2.59, 'Chuck Short Ribs', 'A crowd favorite, known for their richness and meatiness. Flavorful, moist and tender when slow-cooked.', 'embed.widencdn.net/img/beef/7y4c2eohle/exact/Chuck Neck Roast.psd?u=7fueml'),
+(2826, 11.99, 'Hanger Steak', 'A thicker cut within the Short Plate that’s full of flavor with a coarse texture. Marinate and grill.', 'embed.widencdn.net/img/beef/hrc3xsmxdi/exact/Chuck, Square-Cut Pectoral Meat_115D_DSC_1978.psd?u=7fueml'),
+(2828, 5.49, 'Bottom Sirloin Butt', 'This lower portion of the Sirloin section of the Loin that contains three muscles that vary in tenderness.', 'embed.widencdn.net/img/beef/lzvcy3ljor/exact/Hanger Steak.psd?u=7fueml'),
+(2834, 14.49, 'Loin Steak Tail', 'Cut from the underside or Flank portion of the beef hindquarter, ventral or under the Short Loin. Fat trim level is specified by the buyer.', 'embed.widencdn.net/img/beef/xlr64ywysx/exact/Sirloin Bavette Steak.jpg?u=7fueml'),
+(2847, 5.99, 'Outside Round (Flat)', 'Largest section of the full Bottom Round that is separated from the Heel and can be cut into Bottom Round Roasts or Steaks.', 'embed.widencdn.net/img/beef/esjtxq9hyj/exact/Tenderloin_Bone In_188.psd?u=7fueml'),
+(2848, 5.77, 'Inside Skirt', 'Opposite the Outside Skirt Steak, this cut is known for its robust flavor profile. Marinate and grill hot for fajitas or use for stir-fry.', 'embed.widencdn.net/img/beef/kkcdpak7do/exact/Bottom Round_Flat_Denuded.tif?u=7fueml'),
+(2849, 6.89, 'Outside Skirt', 'Opposite the Inside Skirt Steak, this cut is known for its robust flavor profile. Marinate and grill hot for fajitas or use for stir-fry.', 'embed.widencdn.net/img/beef/rufkduagts/exact/Inside Skirt_121D.JPG?u=7fueml'),
+(2854, 12.99, 'Ribeye Cap Roll', 'Rich and satisfying with exceptional tenderness and marbling. Not always easy to find, but best when roasted.', 'embed.widencdn.net/img/beef/ogiynb68wu/exact/Rib, Back Rib, Rib Fingers_124A_DSC_2012.psd?u=7fueml'),
+(2855, 14.99, 'Ribeye Cap Steak', 'Rich and satisfying with exceptional tenderness and marbling.  Perfect for grilling .', 'embed.widencdn.net/img/beef/qd6un2u2zy/exact/Ribeye Cap_112D.jpg?u=7fueml'),
+(2863, 5.99, 'Outside Round, Heel', 'Smaller section of the full Bottom Round that is separated from the Outside Round (Flat).', 'embed.widencdn.net/img/beef/akfvcsqc6h/exact/Ribeye Cap Steak.psd?u=7fueml'),
+(2879, 4.09, 'Chuck Arm Roast', 'Economical and flavorful. Best when slow-cooked.', 'embed.widencdn.net/img/beef/gq1rpvxvyk/exact/Rib, Short Ribs, Trimmed_123B_DSC_2185.psd?u=7fueml'),
+(2882, 9.89, 'Strip Steak, Boneless', 'Tender, lean and perfect for grilling. ', 'embed.widencdn.net/img/beef/b4oefjv7ez/exact/Chuck Arm Roast.psd?u=7fueml'),
+(2918, 3.09, 'Country-Style Ribs', 'Meaty, boneless ribs that work best in a slow-cooker or slow-cooked and finished on the grill.', 'embed.widencdn.net/img/beef/zo7xif9x7b/exact/Top Sirloin Butt_Center-Cut_Boneless_184B.jpg?u=7fueml'),
+(2951, 13.69, 'Brisket', 'This the animals breast, so it can be tougher because it is used for movement. An ideal cut for cooking low and slow.', 'embed.widencdn.net/img/beef/0ihtghs7iy/exact/Brisket_Deckle Off.psd?u=7fueml'),
+(44450, 7.79, 'Chuck Flap/Edge Roast', 'Richly flavored and finely textured. Best for slow-cooking whole or grilling if very thinly sliced across the grain.', 'embed.widencdn.net/img/beef/0mlfyzpyvx/exact/Top Blade_Denuded.jpg?u=7fueml'),
+(44457, 1.13, 'Petite Sirloin/Ball Tip', 'Small roast section of the Bottom Sirloin opposite the Sirloin Tip in the Round. Best when sliced thinly across the grain after cooking.', 'embed.widencdn.net/img/beef/1lkcen3qfs/exact/Top Sirloin Butt.psd?u=7fueml'),
+(44465, 11.69, 'Brisket Point Half', 'The less lean half of the whole Brisket that’s juicy with full flavor. ', 'embed.widencdn.net/img/beef/yqbaydhble/exact/Western Tip Steak.psd?u=7fueml'),
+(44466, 2.49, 'Plate Short Ribs', 'Good beef flavor. Good braised or on the grill with your favorite rub.', 'embed.widencdn.net/img/beef/rgvs4fvelm/exact/Brisket Point.psd?u=7fueml'),
+(44469, 8.98, 'Cowboy Steak', 'Tender, bone-in steak with a frenched rib presentation that is great for the grill.', 'embed.widencdn.net/img/beef/xff6dhbzlz/exact/Shank.psd?u=7fueml'),
+(44478, 1.25, 'Flanken Style Short Ribs', 'Cut thin across the ribs. Good marinated and grilled.', 'embed.widencdn.net/img/beef/k6dtxqdqvm/exact/Flanken-Style Ribs.jpg?u=7fueml'),
+(44480, 15.99, 'Tomahawk Steak', 'Tender bone-in steak from the Rib with a long bone and marbling that adds flavor. Simply season and grill.', 'embed.widencdn.net/img/beef/v7iqh6x7sf/exact/Rib Steak_Frenched._Bone-In_ Tomahawk Steak_1103B PSO 4.jpg?u=7fueml'),
+(44487, 7.79, 'Chuck Roast', 'Great, rich flavor perfect for slow and low cooking.', 'embed.widencdn.net/img/beef/fl0ape3hb2/exact/Chuck Roast Boneless.psd?u=7fueml'),
+(44489, 16.99, 'Prime Rib Roast', 'Bone-in Rib roast perfect for roasting and entertaining.', 'embed.widencdn.net/img/beef/nntlfw5fnj/exact/Hanging Tender_Denuded_140.tif?u=7fueml'),
+(44490, 5.99, 'Chuck Steak', 'Great, rich flavor in an affordable steak.', 'embed.widencdn.net/img/beef/kkpdnz9l9d/exact/Chuck Steak.psd?u=7fueml'),
+(44493, 6.99, 'Short Rib Osso Bucco', 'Long-bone short ribs cut and tied for an osso bucco style presentation.', 'embed.widencdn.net/img/beef/zy0hf3r1ev/exact/Canoe Bones.jpg?u=7fueml');
 
-ALTER TABLE "items" ADD CONSTRAINT "items_fk0" FOREIGN KEY ("item_id") REFERENCES "cart"("item_id");
 
-ALTER TABLE "cart_item" ADD CONSTRAINT "cart_item_fk0" FOREIGN KEY ("item_id") REFERENCES "items"("item_id");
-ALTER TABLE "cart_item" ADD CONSTRAINT "cart_item_fk1" FOREIGN KEY ("cart_id") REFERENCES "cart"("date");
 

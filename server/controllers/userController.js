@@ -12,14 +12,14 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
         const [newUser] = await db.add_user([email, hash, firstName, lastName])
-        // const [cartId] = await db.create_cart(newUser.user_id)
+        const [cartId] = await db.create_cart(newUser.user_id)
         req.session.user = {
             userId: newUser.user_id,
             firstName: newUser.first_name,
             lastName: newUser.last_name,
             email: newUser.email,
             password: newUser.password,
-            // cartId
+            cartId
         }
         res.status(200).send(req.session.user)
     },

@@ -7,6 +7,8 @@ const session = require('express-session')
 const app = express()
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const auth = require('./controllers/userController')
+const cart = require('./controllers/cartController')
+const item = require('./controllers/itemController')
 
 app.use(express.json())
 app.use(session({
@@ -33,3 +35,8 @@ app.post(`/auth/register`, auth.register)
 app.post(`/auth/login`, auth.login)
 app.post(`/auth/logout`, auth.logout)
 app.get(`/auth/user`, auth.getUser)
+
+app.get(`/cart/get_cart`, cart.getCart)
+
+app.get(`/item/all_items`, item.getItems)
+app.get(`/item/item`, item.getItem)
