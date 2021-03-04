@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from './Button'
 import MobileButton from './MobileButton'
 import HamburgerMenu from './HamburgerMenu'
+import axios from 'axios'
+import { logoutUser } from '../redux/userReducer'
 
-const Nav = () => {
+const Nav = (props) => {
     const [toggle, setToggle] = useState(false)
-    
+
     function toggleMenu() {
         return setToggle(!toggle)
+    }
+
+    function logOut() {
+        axios.post('/auth/logout')
+            .then(() => props.logoutUser())
     }
 
     return (
@@ -23,9 +31,9 @@ const Nav = () => {
                 <Link to={'/themeat'}>
                     <Button name='About Cows'></Button>
                 </Link>
-                <Link to={'/login'}>
+                {!props.user.email ? <Link to={'/login'}>
                     <Button name='Login'></Button>
-                </Link>
+                </Link> : <Button name='Log Out' onClick={logOut} />}
             </div>
             <div className='mobileNav'>
                 <HamburgerMenu onClick={toggleMenu} />
@@ -50,4 +58,8 @@ const Nav = () => {
     )
 }
 
-export default Nav
+const mapStateToProps = (state) => {
+    return { user: state.user.user }
+}
+
+export default connect(mapStateToProps, { logoutUser })(Nav)

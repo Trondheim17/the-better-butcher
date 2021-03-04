@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import Button from './Button'
 import { loginUser } from '../redux/userReducer'
+import { withRouter } from 'react-router-dom'
 
 const Auth = (props) => {
     const [email, setEmail] = useState('')
@@ -23,32 +24,58 @@ const Auth = (props) => {
             })
     }
 
-    // const register = () => {
-    //     axios.post(`/auth/register`, { fistName, lastName, email, password})
-    //     .then(res => {
-    //         props.
-    //     })
-    // }
+    const register = () => {
+        axios.post(`/auth/register`, { email: registerEmail, password: registerPassword, firstName, lastName })
+            .then(res => {
+                props.loginUser(res.data)
+                props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     return (
         <div className='loginMain'>
-            <h2>Log In</h2>
-            <div>
-                <input placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
-                <input placeholder='Password' type='password' value={password} onChange={e => setPassword(e.target.value)} />
-                <Button name='Login' onClick={login} />
+            <div className='formContainer'>
+                <h2>Log In</h2>
+                <div className='form'>
+                    <div>
+                        <h3>Email</h3>
+                        <input className='input' value={email} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <h3>Password</h3>
+                        <input className='input pass' type='password' value={password} onChange={e => setPassword(e.target.value)} />
+                    </div>
+                    <Button name='Login' onClick={login} />
+                </div>
             </div>
-            <h3> - - or - -</h3>
-            <h2>Register</h2>
-            <div>
-                <input placeholder='First Name' value={firstName} onChange={e => setFirstName(e.target.value)} />
-                <input placeholder='Last Name' value={lastName} onChange={e => setLastName(e.target.value)} />
-                <input placeholder='Email' value={registerEmail} onChange={e => setRegisterEmail(e.target.value)} />
-                <input placeholder='Password' value={registerPassword} onChange={e => setRegisterPassword(e.target.value)} />
-                <Button name='Register' onClick={login} />
+            <h3 className='or'> - - or - -</h3>
+            <div className='formContainer'>
+                <h2>Register</h2>
+                <div className='form'>
+                    <div>
+                        <h3>First Name</h3>
+                        <input className='input' value={firstName} onChange={e => setFirstName(e.target.value)} />
+                    </div>
+                    <div>
+                        <h3>Last Name</h3>
+                        <input className='input' value={lastName} onChange={e => setLastName(e.target.value)} />
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <input className='input' value={registerEmail} onChange={e => setRegisterEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <h3>Password</h3>
+                        <input className='input pass' type='password' value={registerPassword} onChange={e => setRegisterPassword(e.target.value)} />
+                    </div>
+                    <Button name='Register' onClick={register} />
+                </div>
             </div>
         </div>
     )
 }
 
-export default connect(null, { loginUser })(Auth)
+export default withRouter(connect(null, { loginUser })(Auth))

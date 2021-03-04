@@ -3,20 +3,23 @@ const bcrypt = require('bcrypt')
 module.exports = {
     register: async (req, res) => {
         const db = req.app.get('db')
-        const { email, username, password } = req.body
+        const { firstName, lastName, email, password } = req.body
+        console.log(email)
         const foundUser = await db.get_user_by_email(email)
-        if (foundUser) {
+        if (foundUser.length > 0) {
             return res.status(403).send('User already exists. Please login.')
         }
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        const [newUser] = await db.add_user([email, username, hash])
-        const [cartId] = await db.create_cart(newUser.user_id)
+        const [newUser] = await db.add_user([email, hash, firstName, lastName])
+        // const [cartId] = await db.create_cart(newUser.user_id)
         req.session.user = {
             userId: newUser.user_id,
+            firstName: newUser.first_name,
+            lastName: newUser.last_name,
             email: newUser.email,
-            username: newUser.username,
-            cartId
+            password: newUser.password,
+            // cartId
         }
         res.status(200).send(req.session.user)
     },
@@ -31,9 +34,11 @@ module.exports = {
         const authenticated = bcrypt.compareSync(password, foundUser.password)
         if (authenticated) {
             req.session.user = {
-                userId: newUser.user_id,
-                email: newUser.email,
-                username: newUser.username,
+                userId: foundUser.user_id,
+                firstName: foundUser.first_name,
+                lastName: foundUser.last_name,
+                email: foundUser.email,
+                password: foundUser.password,
                 cartId: null
             }
             res.status(200).send(req.session.user)

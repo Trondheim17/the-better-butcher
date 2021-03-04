@@ -16,7 +16,7 @@ export function loginUser(user) {
     }
 }
 
-export function logoutUser(user) {
+export function logoutUser() {
     return {
         type: LOGOUT_USER,
         payload: initialState
@@ -35,7 +35,7 @@ export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_USER:
             return { ...state, user: action.payload, isLoggedIn: true }
-        case LOGOUT_USER: 
+        case LOGOUT_USER:
             return initialState
         case GET_USER + '_PENDING':
             return state
