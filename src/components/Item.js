@@ -1,20 +1,20 @@
 import React from 'react'
 
 const Item = (props) => {
-    const {price_per_pound, cut_name, cut_image} = props.item
+    const { price_per_pound, cut_name, cut_image } = props.item
     return (
-        <div>
-            <img src={cut_image}/>
-            <h4>{`${cut_name}`}</h4>
+        <div className='item'>
+            <div className='itemImage' style={{ backgroundImage: `url('http://${cut_image}')` }}></div>
+            <div>{`${cut_name}`}</div>
             <p>{`$ ${price_per_pound}`}</p>
-            <button>+</button>
-            <button>-</button>
+            <div className='itemButtons'>
+                <button>+</button>
+                <p>qty</p>
+                <button>-</button>
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {item: state.item.item}
-}
 
-export default connect(mapStateToProps)(Item)
+export default Item

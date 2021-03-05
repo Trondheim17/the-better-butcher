@@ -4,6 +4,7 @@ import Auth from './components/Auth'
 import Main from './components/Main'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Shop from './components/Shop'
 
 export default (
     <Switch>
@@ -24,6 +25,7 @@ export default (
         <Route path='/thebutchershop'>
             <div>
                 <Header />
+                <Shop />
                 <Footer />
             </div>
         </Route>

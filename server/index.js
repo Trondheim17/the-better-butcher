@@ -39,4 +39,4 @@ app.get(`/auth/user`, auth.getUser)
 app.get(`/cart/get_cart`, cart.getCart)
 
 app.get(`/item/all_items`, item.getItems)
-app.get(`/item/item`, item.getItem)
+app.get(`/item/item`, item.getItem )
