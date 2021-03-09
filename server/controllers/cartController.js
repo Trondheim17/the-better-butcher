@@ -1,8 +1,10 @@
 
 
 module.exports = {
-    addToCart: (req, res) => {
-        
+    addToCart: async (req, res) => {
+        const db = req.app.get('db')
+        const cart = await db.add_to_cart(req.item_id, req.cart_id)
+        return res.status(200).send(cart)
     },
 
     removeFromCart: (req,res) => {

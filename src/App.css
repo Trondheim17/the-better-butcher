@@ -149,3 +149,20 @@ h3 {
   display: flex;
   flex-direction: row;
 }
+
+.plusMinus {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.qty {
+  width: 15px;
+  height: 15px;
+}
+
+.cart {
+  width: 95vw;
+  height: 80vh;
+}

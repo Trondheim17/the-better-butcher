@@ -3,9 +3,9 @@ const initialState = {
     items: []
 }
 
-const ADD_TO_CART = 'ADD_TO_CART'
-const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-const EDIT_ITEM_QTY = 'EDIT_ITEM_QTY'
+// const ADD_TO_CART = 'ADD_TO_CART'
+// const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+// const EDIT_ITEM_QTY = 'EDIT_ITEM_QTY'
 const SET_CART = 'SET_CART'
 
 export function setCart(cart) {
@@ -15,26 +15,26 @@ export function setCart(cart) {
     }
 }
 
-export function addToCart(item) {
-    return {
-        type: ADD_TO_CART,
-        payload: item
-    }
-}
+// export function addToCart(item) {
+//     return {
+//         type: ADD_TO_CART,
+//         payload: item
+//     }
+// }
 
-export function removeFromCart(item) {
-    return {
-        type: REMOVE_FROM_CART,
-        payload: item
-    }
-}
+// export function removeFromCart(item) {
+//     return {
+//         type: REMOVE_FROM_CART,
+//         payload: item
+//     }
+// }
 
-export function editQty(item, str) {
-    return {
-        type: EDIT_ITEM_QTY,
-        payload: { item, str }
-    }
-}
+// export function editQty(item, str) {
+//     return {
+//         type: EDIT_ITEM_QTY,
+//         payload: { item, str }
+//     }
+// }
 
 export default function cartReducer(state = initialState, {type, payload}) {
     switch (type) {

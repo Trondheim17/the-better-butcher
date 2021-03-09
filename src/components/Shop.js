@@ -1,24 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import Item from './Item'
+import { setItems } from '../redux/itemReducer'
+import { connect } from 'react-redux'
 
-const Shop = () => {
-    const [shopList, setShopList] = useState([])
+const Shop = (props) => {
+    const { setItems } = props
+    const { items } = props
 
     useEffect(() => {
-        axios.get('/item/all_items')
-            .then(res =>
-                setShopList(res.data)
-            )
-    }, [])
+        if (!items.length) {
+            axios.get('/item/all_items')
+                .then(res =>
+                    setItems(res.data)
+                )
+        } 
+    }, [setItems, items])
 
     return (
         <div className='imageBlocks'>
-            {shopList.map((item) => {
-                return <Item key={item.cut_id} item={item} />
+            {props.items.map((item) => {
+                return <Item key={item.cut_id} cut={item} />
             })}
         </div>
     )
 }
 
-export default Shop
+const mapStateToProps = (state) => {
+    return { items: state.item.items }
+}
+
+export default connect(mapStateToProps, { setItems })(Shop)

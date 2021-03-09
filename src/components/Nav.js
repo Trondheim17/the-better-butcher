@@ -28,9 +28,9 @@ const Nav = (props) => {
                 <Link to={'/thebutchershop'}>
                     <Button name='Shop'></Button>
                 </Link>
-                <Link to={'/themeat'}>
-                    <Button name='About Cows'></Button>
-                </Link>
+                {props.user.email && <Link to={'/cart'}>
+                    <Button name='Cart'></Button>
+                </Link>}
                 {!props.user.email ? <Link to={'/login'}>
                     <Button name='Login'></Button>
                 </Link> : <Button name='Log Out' onClick={logOut} />}
@@ -48,8 +48,8 @@ const Nav = (props) => {
                         <Link to={'/thebutchershop'}>
                             <MobileButton className='mainNavButton' name='Shop'></MobileButton>
                         </Link>
-                        <Link to={'/themeat'}>
-                            <MobileButton className='mainNavButton' name='About Cows'></MobileButton>
+                        <Link to={'/cart'}>
+                            <MobileButton className='mainNavButton' name='Cart'></MobileButton>
                         </Link>
                     </div>
                 }

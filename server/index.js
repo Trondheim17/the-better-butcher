@@ -36,6 +36,7 @@ app.post(`/auth/login`, auth.login)
 app.post(`/auth/logout`, auth.logout)
 app.get(`/auth/user`, auth.getUser)
 
+app.post('/cart/add_to_cart', cart.addToCart)
 app.get(`/cart/get_cart`, cart.getCart)
 
 app.get(`/item/all_items`, item.getItems)
