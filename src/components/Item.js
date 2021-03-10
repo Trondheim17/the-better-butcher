@@ -27,8 +27,9 @@ const Item = (props) => {
         console.log(props)
         axios.post('/cart/add_to_cart', { cut_id: props.cut.cut_id, cart_id: props.cart.cart_id, qty: quantity })
             .then(async (res) => {
-                const updatedCart = await axios.get('/cart/get_cart', props.user.user_id)
-                return setCart(updatedCart.data)
+                const updatedCart = await axios.get('/cart/get_cart')
+                setQuantity(1)
+                props.setCart(updatedCart.data)
             })
             .catch(() => {
                 props.history.push('/login')
@@ -39,7 +40,7 @@ const Item = (props) => {
         <div className='item'>
             <div className='itemImage' style={{ backgroundImage: `url('http://${cut_image}')` }}></div>
             <div>{`${cut_name}`}</div>
-            <p>{`$ ${price_per_pound}`}</p>
+            <p>{`$ ${price_per_pound}/lb`}</p>
             <div className='itemButtons'>
                 <button className='plusMinus' onClick={dec}>-</button>
                 <input className='qty' value={quantity} onChange={e => setQuantity(e.target.value)} />

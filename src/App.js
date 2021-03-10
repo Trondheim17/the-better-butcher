@@ -1,3 +1,4 @@
+import './reset.css'
 import './App.css';
 import routes from './routes'
 import React, { useEffect } from 'react'
@@ -19,7 +20,6 @@ function App(props) {
     if (isLoggedIn) {
       axios.get('/cart/get_cart')
         .then(res => {
-          console.log(res.data)
           setCart(res.data)
         }
         )

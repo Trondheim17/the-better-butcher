@@ -6,6 +6,7 @@ const initialState = {
 const SET_CART = 'SET_CART'
 
 export function setCart(cart) {
+    console.log(cart)
     return {
         type: SET_CART,
         payload: cart

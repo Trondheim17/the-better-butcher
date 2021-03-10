@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 // import axios from 'axios'
 // import { useEffect } from 'react'
 import { setCart } from '../redux/cartReducer'
-import Item from './Item'
+import ItemInCart from './ItemInCart'
 
 
 const Cart = (props) => {
@@ -21,7 +21,7 @@ const Cart = (props) => {
             <h2>Cart</h2>
             <div className='cartItems'>
                 {props.cart.map((cut) => {
-                    return <Item key={cut.cut_id} cut={cut} />
+                    return <ItemInCart key={cut.cut_id} cut={cut} />
                 })}
             </div>
         </div>
