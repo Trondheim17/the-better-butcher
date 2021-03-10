@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 
 
 const Header = ({user}) => {
-    console.log(user)
     return (
         <div className='Header' >
             <Logo />

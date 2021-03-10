@@ -2,8 +2,9 @@
 
 module.exports = {
     addToCart: async (req, res) => {
+        if(!req.session?.user?.userId)return res.sendStatus(403)
         const db = req.app.get('db')
-        const cart = await db.add_to_cart(req.item_id, req.cart_id)
+        const cart = await db.add_to_cart(req.body.item_id, req.body.cart_id, req.body.qty)
         return res.status(200).send(cart)
     },
 
@@ -21,8 +22,8 @@ module.exports = {
 
     getCart: async (req, res) => {
         const db = req.app.get('db')
-        const cart = await db.get_active_cart(req.session.user.user_id)
-        console.log(cart)
+        console.log(req.session.user.userId)
+        const cart = await db.get_active_cart(req.session.user.userId)
         return res.status(200).send(cart)
     }
 

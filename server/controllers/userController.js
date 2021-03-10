@@ -39,7 +39,6 @@ module.exports = {
                 lastName: foundUser.last_name,
                 email: foundUser.email,
                 password: foundUser.password,
-                cartId: null
             }
             res.status(200).send(req.session.user)
         } else {

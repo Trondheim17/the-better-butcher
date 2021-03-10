@@ -42,15 +42,15 @@ const Nav = (props) => {
                         <Link to={'/'}>
                             <MobileButton className='mainNavButton' name='Home'></MobileButton>
                         </Link>
-                        <Link to={'/login'}>
-                            <MobileButton className='mainNavButton' name='Login'></MobileButton>
-                        </Link>
                         <Link to={'/thebutchershop'}>
                             <MobileButton className='mainNavButton' name='Shop'></MobileButton>
                         </Link>
-                        <Link to={'/cart'}>
+                        {props.user.email && <Link to={'/cart'}>
                             <MobileButton className='mainNavButton' name='Cart'></MobileButton>
-                        </Link>
+                        </Link>}
+                        {!props.user.email ? <Link to={'/login'}>
+                            <MobileButton className='mainNavButton' name='Login'></MobileButton>
+                        </Link> : <MobileButton className='mainNaveButton' name='Log Out' onClick={logOut}/>}
                     </div>
                 }
             </div>

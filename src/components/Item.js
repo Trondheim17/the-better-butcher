@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import AddToCartButton from './AddToCartButton'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { setCart } from '../redux/cartReducer'
 
 const Item = (props) => {
     const { cut_name, cut_image, price_per_pound } = props.cut
@@ -23,15 +24,15 @@ const Item = (props) => {
     }
 
     const addItem = () => {
-        if(props.user) {
-            axios.post('/cart/add_to_cart', {cut_id: props.item.cut_id, cart_id: props.cart.cart_id, quantity})
-            .then(res => {
-
+        console.log(props)
+        axios.post('/cart/add_to_cart', { cut_id: props.cut.cut_id, cart_id: props.cart.cart_id, qty: quantity })
+            .then(async (res) => {
+                const updatedCart = await axios.get('/cart/get_cart', props.user.user_id)
+                return setCart(updatedCart.data)
             })
-        } else {
-            props.history.push('/login')
-        }
-
+            .catch(() => {
+                props.history.push('/login')
+            })
     }
 
     return (
@@ -44,7 +45,7 @@ const Item = (props) => {
                 <input className='qty' value={quantity} onChange={e => setQuantity(e.target.value)} />
                 <button className='plusMinus' onClick={inc}>+</button>
             </div>
-            <AddToCartButton onClick={addItem}/>
+            <AddToCartButton onClick={addItem} />
         </div>
     )
 }
@@ -53,4 +54,4 @@ const mapStateToProps = (state) => {
     return { ...state }
 }
 
-export default withRouter(connect(mapStateToProps)(Item))
+export default withRouter(connect(mapStateToProps, { setCart })(Item))
