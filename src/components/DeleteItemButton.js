@@ -2,7 +2,7 @@ import React from 'react'
 
 const Button = (props) => {
     return (
-        <button className='addToCartButton' onClick={props.onClick} >Delete</button>
+        <button className='deleteItemButton' onClick={props.onClick} >Delete</button>
     )
 }
 

@@ -98,10 +98,10 @@
   margin-top: 45px;
 }
 
-.footer {
-  height: 10vh;
-  width: 100vw;
-  background-color: #9a0606;
+h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Allerta Stencil', sans-serif;
 }
 
 .formContainer {
@@ -115,9 +115,34 @@
   font-family: 'Allerta Stencil', sans-serif;
 }
 
-h3 {
-  font-family: 'Allerta Stencil', sans-serif;
+@media (max-width: 992px) {
+  .loginMain {
+    display: flex;
+    flex-direction: column;
+    height: 825px;
+  }
+
+  .or {
+    margin-top: 0px;
+  }
+
+  .formContainer {
+    justify-content: initial;
+    height: 35vh;
+    margin: 15px
+  }
 }
+
+.mobileNav {
+  
+}
+
+.footer {
+  height: 10vh;
+  width: 100vw;
+  background-color: #9a0606;
+}
+
 
 .itemImage {
   width: 100px;

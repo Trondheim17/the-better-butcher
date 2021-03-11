@@ -10,15 +10,29 @@ const ItemInCart = (props) => {
 
     const inc = () => {
         const newQty = cartQuantity + 1
-        return setCartQuantity(newQty)
+        setCartQuantity(newQty)
+        axios.put('/cart/edit_cart', { qty: newQty, cart_id: props.cart.cart[0].cart_id, cut_id: props.cut.cut_id })
+            .then(async (res) => {
+                const updatedCart = await axios.get('/cart/get_cart')
+                props.setCart(updatedCart.data)
+            })
     }
 
     const dec = () => {
         if (cartQuantity === 1) {
-            return setCartQuantity(1)
+            axios.delete(`/cart/remove_from_cart?cart_id=${props.cart.cart[0].cart_id}&cut_id=${props.cut.cut_id}`)
+                .then(async (res) => {
+                    const updatedCart = await axios.get('/cart/get_cart')
+                    props.setCart(updatedCart.data)
+                })
         } else {
             const newQty = cartQuantity - 1
-            return setCartQuantity(newQty)
+            setCartQuantity(newQty)
+            axios.put('/cart/edit_cart', { qty: newQty, cart_id: props.cart.cart[0].cart_id, cut_id: props.cut.cut_id })
+                .then(async (res) => {
+                    const updatedCart = await axios.get('/cart/get_cart')
+                    props.setCart(updatedCart.data)
+                })
         }
     }
 

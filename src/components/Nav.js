@@ -38,7 +38,7 @@ const Nav = (props) => {
             <div className='mobileNav'>
                 <HamburgerMenu onClick={toggleMenu} />
                 {toggle &&
-                    <div>
+                    <div className='mobileNav'>
                         <Link to={'/'}>
                             <MobileButton className='mainNavButton' name='Home'></MobileButton>
                         </Link>
