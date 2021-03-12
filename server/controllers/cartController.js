@@ -22,7 +22,7 @@ module.exports = {
     },
 
     checkOut: (req, res) => {
-
+        
     },
 
     getCart: async (req, res) => {

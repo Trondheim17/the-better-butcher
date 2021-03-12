@@ -1,20 +1,13 @@
 import { connect } from 'react-redux'
-// import axios from 'axios'
-// import { useEffect } from 'react'
-import { setCart } from '../redux/cartReducer'
 import ItemInCart from './ItemInCart'
+import { withRouter } from 'react-router-dom'
 
 
 const Cart = (props) => {
 
-    // useEffect(() => {
-    //     axios.get('/cart/get_cart')
-    //         .then(res =>
-    //             setCart(res.data)
-    //         )
-    // }, [])
-
-    console.log(props)
+    const checkout = () => {
+        props.history.push('/checkout')
+    }
 
     return (
         <div className='cart'>
@@ -24,6 +17,7 @@ const Cart = (props) => {
                     return <ItemInCart key={cut.cut_id} cut={cut} />
                 })}
             </div>
+            <button onClick={checkout} >Checkout</button>
         </div>
     )
 
@@ -33,4 +27,4 @@ const mapStateToProps = (state) => {
     return { cart: state.cart.cart }
 }
 
-export default connect(mapStateToProps, { setCart })(Cart)
+export default withRouter(connect(mapStateToProps)(Cart))

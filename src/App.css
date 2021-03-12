@@ -196,3 +196,13 @@ h3 {
   display: flex;
   flex-wrap: wrap;
 }
+
+.wizard {
+  height: 100vh;
+  width: 100 vw;
+}
+
+.reviewCart {
+  height: 100vh;
+  width: 100 vw;
+}
