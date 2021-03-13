@@ -1,44 +1,31 @@
-import { useState } from 'react'
+const BillingInfo = (props) => {
 
-const BillingInfo = () => {
-    const [shipToAddress, setShipToAddress] = useState('')
-    const [shipToCity, setShipToCity] = useState('')
-    const [shipToState, setShipToState] = useState('')
-    const [shipToZip, setShipToZip] = useState('')
+    // const check = () => {
+    //     props.setIsChecked(true)
+    //     props.setBillToAddress(props.shipToAddress)
+    //     props.setBillToCity(props.shipToCity)
+    //     props.setBillToState(props.shipToState)
+    //     props.setBillToZip(props.shipToZip)
+    // }
 
-    const [billToAddress, setBillToAddress] = useState('')
-    const [billToCity, setBillToCity] = useState('')
-    const [billToState, setBillToState] = useState('')
-    const [billToZip, setBillToZip] = useState('')
-
-    const [isChecked, setIsChecked] = useState(false)
-
-    const check = () => {
-        setIsChecked(true)
-        setBillToAddress(shipToAddress)
-        setBillToCity(shipToCity)
-        setBillToState(shipToState)
-        setBillToZip(shipToZip)
-    }
-
-    const uncheck = () => {
-        setIsChecked(false)
-        setBillToAddress('')
-        setBillToCity('')
-        setBillToState('')
-        setBillToZip('')
-    }
+    // const uncheck = () => {
+    //     props.setIsChecked(false)
+    //     props.setBillToAddress('')
+    //     props.setBillToCity('')
+    //     props.setBillToState('')
+    //     props.setBillToZip('')
+    // }
 
     return (
         <div>
             <div>
                 <h3>Ship to Street Address</h3>
-                <input className='input' value={shipToAddress} onChange={e => setShipToAddress(e.target.value)} />
+                <input className='input' value={props.shipToAddress} onChange={e => props.setShipToAddress(e.target.value)} />
                 <h3>Ship to City</h3>
-                <input className='input' value={shipToCity} onChange={e => setShipToCity(e.target.value)} />
+                <input className='input' value={props.shipToCity} onChange={e => props.setShipToCity(e.target.value)} />
                 <div>
                     <label htmlFor='State'>Select Ship to State</label>
-                    <select name='State' id='State' value={shipToState} onChange={e => setShipToState(e.target.value)}>
+                    <select name='State' id='State' value={props.shipToState} onChange={e => props.setShipToState(e.target.value)}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -93,18 +80,18 @@ const BillingInfo = () => {
                     </select>
                 </div>
                 <h3>Ship to Zip Code</h3>
-                <input className='input' value={shipToZip} onChange={e => setShipToZip(e.target.value)} />
+                <input className='input' value={props.shipToZip} onChange={e => props.setShipToZip(e.target.value)} />
             </div>
 
-            <input type='checkbox' checked={isChecked} onChange={!isChecked ? check : uncheck} />
+            <input type='checkbox' checked={props.isChecked} onChange={!props.isChecked ? props.check : props.uncheck} />
             <div>
                 <h3>Bill to Street Address</h3>
-                <input className='input' value={billToAddress} onChange={e => setBillToAddress(e.target.value)} disabled={isChecked && true} />
+                <input className='input' value={props.billToAddress} onChange={e => props.setBillToAddress(e.target.value)} disabled={props.isChecked && true} />
                 <h3>Bill to City</h3>
-                <input className='input' value={billToCity} onChange={e => setBillToCity(e.target.value)} disabled={isChecked && true} />
+                <input className='input' value={props.billToCity} onChange={e => props.setBillToCity(e.target.value)} disabled={props.isChecked && true} />
                 <div>
                     <label htmlFor='State'>Select Bill to State</label>
-                    <select name='State' id='State' value={billToState} onChange={e => setBillToState(e.target.value)} disabled={isChecked && true}>
+                    <select name='State' id='State' value={props.billToState} onChange={e => props.setBillToState(e.target.value)} disabled={props.isChecked && true}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -159,7 +146,7 @@ const BillingInfo = () => {
                     </select>
                 </div>
                 <h3>Billing Zip Code</h3>
-                <input className='input' value={billToZip} onChange={e => setBillToZip(e.target.value)} disabled={isChecked && true} />
+                <input className='input' value={props.billToZip} onChange={e => props.setBillToZip(e.target.value)} disabled={props.isChecked && true} />
             </div>
         </div>
     )
