@@ -14,11 +14,16 @@ const Shop = (props) => {
                 .then(res =>
                     setItems(res.data)
                 )
-        } 
+        }
     }, [setItems, items])
 
     return (
         <div className='imageBlocks'>
+            <div className='grunge' style={{ backgroundImage: 'url(https://images.squarespace-cdn.com/content/v1/5d4dc574034e1f000197bad0/1566400416112-BDMLTW8MH8W53BMHLP6S/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/grunge-stone1-overlay-example.jpg?format=2500w)' }}>
+                <div className='shopTag'> FARM TO BUTCHER TO TABLE</div>
+                <div className='shopTagSub'>Responibly sourced. Expertly cut. Delived to your door.</div>
+            </div>
+
             {props.items.map((item) => {
                 return <Item key={item.cut_id} cut={item} />
             })}

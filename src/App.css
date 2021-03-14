@@ -1,16 +1,16 @@
 * {
-  /* background-color: #e9e6dd; */
+  /* background-color: #E5E5E5; */
 
 
 }
 
 .Header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: #222222;
-  height: 10vh;
+  background-color: #111111;
+  height: 12vh;
   width: 100vw;
   font: black
 }
@@ -18,6 +18,7 @@
 .Logo {
   width: 200px;
   height: 200px;
+  margin-left: 50px;
 }
 
 .cattleMain {
@@ -30,7 +31,17 @@
 }
 
 .deskTopNav {
-  
+  width:60vw;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 75px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .hamburgerMenu {
@@ -56,16 +67,19 @@
 }
 
 .mainNavButton {
-  background-color: #222222;
+  background-color: #111111;
   color: #FFFFFF;
   transition-duration: 0.4s;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Gothic A1', sans-serif;
+  text-transform: uppercase;
   width: 125px;
   height: 50px;
   margin-left: 25px;
   margin-right: 25px;
   border: none;
   box-shadow: none;
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .mainNavButton:focus {
@@ -81,12 +95,12 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 .input {
   border: 2px solid #9a0606;
-  background-color: #F8F4EB;
+  background-color: #E5E5E5;
   /* margin: 5px; */
   width: 275px;
   height: 50px;
@@ -96,7 +110,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 .pass {
@@ -110,7 +124,7 @@
 h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 .formContainer {
@@ -121,7 +135,7 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 @media (max-width: 992px) {
@@ -154,24 +168,24 @@ h3 {
 
 
 .itemImage {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  margin: -20px
 }
 
 .imageBlocks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  
+  justify-content: space-around;
 }
 
 .item {
-  width: 200px;
-  height: 200px;
-  margin: 20px;
+  width: 250px;
+  height: 350px;
+  margin-bottom: 25px;
   outline: #E2C765 solid 2px;
   display: flex;
   justify-content: center;
@@ -191,10 +205,6 @@ h3 {
   margin-left: 5px;
 }
 
-.qty {
-  width: 15px;
-  height: 15px;
-}
 
 .cart {
   width: 95vw;
@@ -209,7 +219,7 @@ h3 {
 .wizard {
   height: 100vh;
   width: 100 vw;
-  background-color: #F8F4EB ;
+  background-color: #E5E5E5 ;
 }
 
 .reviewCart {
@@ -229,22 +239,96 @@ h3 {
   color: #ffffff;
   border: none;
   box-shadow: none;
+  width: 175px;
+  height: 45px;
+  margin-top: 5px;
 }
 
 .plusMinus {
-  outline: #9C0000  15px;
+  outline: #9C0000;
   color: #9C0000;
   box-shadow: none;
   background-color: none;
+  margin-top: 10px;
 }
 
 .plusMinusRow {
   display: flex;
   flex-direction: column;
   background-color: none;
+  width: 30px;
+  height: 50px;
+  margin-top: 7px;
 }
 
 .qty {
   background-color: none;
   border: none;
+  width: 40px;
+  height: 30px;
+  font-size: 30px;
+  outline: none;
+  padding-top: 10px;
+  padding-bottom: -5px;
+  text-align: center;
+  margin-left: -8px;
+  border-bottom: black solid 2px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+}
+
+.cutName {
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.price{
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.itemLabel {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.grunge {
+  height: 275px;
+  width: 100vw;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopTag {
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.shopTagSub {
+  color: #FFFFFF;
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.logo {
+  font-family: 'Stardos Stencil', cursive;
+  color: #FFFFFF;
+  font-size: 19px;
+  max-width: 100px;
+  text-align: center;
+  font-weight: lighter;
+  margin-left: 75px;
 }

@@ -1,25 +1,22 @@
 import React from 'react'
 import Nav from './Nav'
 import Logo from './Logo'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 
-const Header = ({user}) => {
+const Header = () => {
     return (
         <div className='Header' >
             <Logo />
-            <div>
+            <div className='nav'>
                 <Nav />
-            </div>
-            <div>
-                { user.firstName && `Welcome, ${user.firstName} ${user.lastName}`}
             </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    return {user: state.user.user}
+    return { user: state.user.user }
 }
 
 export default connect(mapStateToProps)(Header)
