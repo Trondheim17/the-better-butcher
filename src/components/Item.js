@@ -42,9 +42,11 @@ const Item = (props) => {
             <div>{`${cut_name}`}</div>
             <p>{`$ ${price_per_pound}/lb`}</p>
             <div className='itemButtons'>
-                <button className='plusMinus' onClick={dec}>-</button>
+                <div className='plusMinusRow' >
+                    <button className='plusMinus' onClick={inc}>+</button>
+                    <button className='plusMinus' onClick={dec}>-</button>
+                </div>
                 <input className='qty' value={quantity} onChange={e => setQuantity(e.target.value)} />
-                <button className='plusMinus' onClick={inc}>+</button>
             </div>
             <AddToCartButton onClick={addItem} />
         </div>

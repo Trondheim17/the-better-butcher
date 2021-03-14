@@ -1,20 +1,5 @@
 const BillingInfo = (props) => {
 
-    // const check = () => {
-    //     props.setIsChecked(true)
-    //     props.setBillToAddress(props.shipToAddress)
-    //     props.setBillToCity(props.shipToCity)
-    //     props.setBillToState(props.shipToState)
-    //     props.setBillToZip(props.shipToZip)
-    // }
-
-    // const uncheck = () => {
-    //     props.setIsChecked(false)
-    //     props.setBillToAddress('')
-    //     props.setBillToCity('')
-    //     props.setBillToState('')
-    //     props.setBillToZip('')
-    // }
 
     return (
         <div>

@@ -1,11 +1,18 @@
+* {
+  /* background-color: #e9e6dd; */
+
+
+}
+
 .Header {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  background-color: #f6f6f6;
+  background-color: #222222;
   height: 10vh;
   width: 100vw;
+  font: black
 }
 
 .Logo {
@@ -49,20 +56,22 @@
 }
 
 .mainNavButton {
-  background-color: #f6f6f6;
-  color: black;
-  border: 2px solid #9a0606;
+  background-color: #222222;
+  color: #FFFFFF;
   transition-duration: 0.4s;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 125px;
   height: 50px;
   margin-left: 25px;
   margin-right: 25px;
+  border: none;
+  box-shadow: none;
 }
 
-.mainNavButton:hover {
+.mainNavButton:focus {
   background-color: #9a0606;
-  color: #f6f6f6;
+  color: #FFFFFF;
+  outline: none;
 }
 
 .loginMain {
@@ -77,7 +86,7 @@
 
 .input {
   border: 2px solid #9a0606;
-  background-color: #f6f6f6;
+  background-color: #F8F4EB;
   /* margin: 5px; */
   width: 275px;
   height: 50px;
@@ -163,7 +172,7 @@ h3 {
   width: 200px;
   height: 200px;
   margin: 20px;
-  outline: black solid 2px;
+  outline: #E2C765 solid 2px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -200,9 +209,42 @@ h3 {
 .wizard {
   height: 100vh;
   width: 100 vw;
+  background-color: #F8F4EB ;
 }
 
 .reviewCart {
   height: 100vh;
   width: 100 vw;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addToCartButton {
+  background-color: #9C0000 ;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}
+
+.plusMinus {
+  outline: #9C0000  15px;
+  color: #9C0000;
+  box-shadow: none;
+  background-color: none;
+}
+
+.plusMinusRow {
+  display: flex;
+  flex-direction: column;
+  background-color: none;
+}
+
+.qty {
+  background-color: none;
+  border: none;
 }

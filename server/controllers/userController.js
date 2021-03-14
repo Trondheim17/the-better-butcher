@@ -57,5 +57,14 @@ module.exports = {
         } else {
             res.status(404).send('Please Log In')
         }
+    },
+
+    setAddress: async (req,res) => {
+        console.log(req.body)
+        const db = req.app.get('db')
+        const { shipToAddress, shipToCity, shipToState, shipToZip, billToAddress, billToCity, billToState, billToZip, user_id } = req.body
+        const updatedUser = await db.set_user_address(shipToAddress, shipToCity, shipToState, shipToZip, billToAddress, billToCity, billToState, billToZip, user_id)
+        console.log(updatedUser)
+        res.status(200).send(updatedUser)
     }
 }

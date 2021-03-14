@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
+const stripe = require('stripe')('pk_test_51ITFSzHmJgBX8T7ugcThrwJ3ZZJUN9FtCswilVA4cG4EWtktMuExNQtQGNA8HE7v2Tt62s3ULERj8FftfJIbOLkh00gwkI0lMF')
 
 const app = express()
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
@@ -35,6 +36,7 @@ massive({
 app.post(`/auth/register`, auth.register)
 app.post(`/auth/login`, auth.login)
 app.post(`/auth/logout`, auth.logout)
+app.post(`/auth/set_address`, auth.setAddress)
 app.get(`/auth/user`, auth.getUser)
 
 app.post('/cart/add_to_cart', cart.addToCart)

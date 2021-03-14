@@ -27,7 +27,8 @@ const Checkout = (props) => {
     const inc = () => {
         switch (step) {
             case 2:
-                axios.post('/auth/set_address', { shipToAddress, shipToCity, shipToState, shipToZip, billToAddress, billToCity, billToState, billToZip })
+                console.log(props.user)
+                axios.post('/auth/set_address', { shipToAddress, shipToCity, shipToState, shipToZip, billToAddress, billToCity, billToState, billToZip, user_id: props.user.user.userId })
                     .then(res => props.getUser(res.data))
                 setStep(step + 1)
                 break
