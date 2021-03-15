@@ -87,10 +87,31 @@ const Checkout = (props) => {
                 check={check}
                 uncheck={uncheck}
             />}
+            {step === 3 && <CreditCardInfo
+                shipToAddress={shipToAddress}
+                setShipToAddress={setShipToAddress}
+                shipToCity={shipToCity}
+                setShipToCity={setShipToCity}
+                shipToState={shipToState}
+                setShipToState={setShipToState}
+                shipToZip={shipToZip}
+                setShipToZip={setShipToZip}
+                billToAddress={billToAddress}
+                setBillToAddress={setBillToAddress}
+                billToCity={billToCity}
+                setBillToCity={setBillToCity}
+                billToState={billToState}
+                setBillToState={setBillToState}
+                billToZip={billToZip}
+                setBillToZip={setBillToZip}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
+                check={check}
+                uncheck={uncheck}
+            />}
             <div>
-                {step === 3 && <CreditCardInfo />}
                 {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
-                {step !== 4 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton'>Checkout</button>}
+                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton'>Checkout</button>}
             </div>
         </div>
     )

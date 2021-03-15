@@ -5,9 +5,9 @@ const BillingInfo = (props) => {
         <div className='billingInfo'>
             <div className='billingInfo'>
                 <h3>Ship to Street Address</h3>
-                <input className='input billingInput' value={props.shipToAddress} onChange={e => props.setShipToAddress(e.target.value)} />
+                <input required className='input billingInput' value={props.shipToAddress} onChange={e => props.setShipToAddress(e.target.value)}  />
                 <h3>Ship to City</h3>
-                <input className='input billingInput' value={props.shipToCity} onChange={e => props.setShipToCity(e.target.value)} />
+                <input required className='input billingInput' value={props.shipToCity} onChange={e => props.setShipToCity(e.target.value)} />
                 <div>
                     <label htmlFor='State'>Select Ship to State</label>
                     <select name='State' id='State' value={props.shipToState} onChange={e => props.setShipToState(e.target.value)}>
@@ -65,7 +65,7 @@ const BillingInfo = (props) => {
                     </select>
                 </div>
                 <h3>Ship to Zip Code</h3>
-                <input className='input billingInput' value={props.shipToZip} onChange={e => props.setShipToZip(e.target.value)} />
+                <input required className='input billingInput' value={props.shipToZip} onChange={e => props.setShipToZip(e.target.value)} />
             </div>
             <div className='checkboxInfo'>
                 <input type='checkbox' checked={props.isChecked} onChange={!props.isChecked ? props.check : props.uncheck} />
@@ -73,9 +73,9 @@ const BillingInfo = (props) => {
             </div>
             <div>
                 <h3>Bill to Street Address</h3>
-                <input className='input billingInput' value={props.billToAddress} onChange={e => props.setBillToAddress(e.target.value)} disabled={props.isChecked && true} />
+                <input required className='input billingInput' value={props.billToAddress} onChange={e => props.setBillToAddress(e.target.value)} disabled={props.isChecked && true} />
                 <h3>Bill to City</h3>
-                <input className='input billingInput' value={props.billToCity} onChange={e => props.setBillToCity(e.target.value)} disabled={props.isChecked && true} />
+                <input required className='input billingInput' value={props.billToCity} onChange={e => props.setBillToCity(e.target.value)} disabled={props.isChecked && true} />
                 <div>
                     <label htmlFor='State'>Select Bill to State</label>
                     <select name='State' id='State' value={props.billToState} onChange={e => props.setBillToState(e.target.value)} disabled={props.isChecked && true}>
@@ -133,7 +133,7 @@ const BillingInfo = (props) => {
                     </select>
                 </div>
                 <h3>Billing Zip Code</h3>
-                <input className='input billingInput' value={props.billToZip} onChange={e => props.setBillToZip(e.target.value)} disabled={props.isChecked && true} />
+                <input required className='input billingInput' value={props.billToZip} onChange={e => props.setBillToZip(e.target.value)} disabled={props.isChecked && true} />
             </div>
         </div>
     )

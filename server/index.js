@@ -47,6 +47,33 @@ app.delete(`/cart/remove_from_cart`, cart.removeFromCart)
 app.get(`/item/all_items`, item.getItems)
 app.get(`/item/item`, item.getItem )
 
+const YOUR_DOMAIN = 'http://localhost:4343';
+
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+  });
+  res.json({ id: session.id });
+});
+
+
+
 app.use( express.static( `${__dirname}/../build`));
 
 app.get('*', (req, res) => {
