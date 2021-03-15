@@ -17,8 +17,7 @@
 
 .main {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .Logo {
@@ -28,14 +27,17 @@
 }
 
 .cattleMain {
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .mobileNav {
-  
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .deskTopNav {
@@ -58,6 +60,12 @@
   display: flex;
   align-self: right;
   margin-right: 20px;
+  
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 992px) {
@@ -89,6 +97,23 @@
   box-shadow: none;
   font-size: 14px;
   font-weight: 900;
+}
+
+.mobileNavButton {
+  background-color: transparent;
+  color: #FFFFFF;
+  transition-duration: 0.4s;
+  font-family: 'Gothic A1', sans-serif;
+  text-transform: uppercase;
+  width: 90px;
+  height: 45px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 900;
+  outline: none;
 }
 
 .mainNavButton:focus {
@@ -161,12 +186,14 @@ h3 {
 
   .or {
     font-family: 'Gothic A1', sans-serif;
+    margin-right: 85px;
   }
 
   .formContainer {
     justify-content: initial;
     height: 35vh;
-    margin: 15px
+    margin: 15px;
+    margin-right: 100px;
   }
 
   .billingInput {
@@ -178,9 +205,6 @@ h3 {
   }
 }
 
-.mobileNav {
-  
-}
 
 .footer {
   height: 10vh;
@@ -401,3 +425,161 @@ h3 {
   width: 100vw;
   height: 100vh;
 }
+
+.showNavLinks {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 200px;
+  background: #111111;
+  justify-content: space-around;
+  align-items: center;
+  transform: translate(0, 0px);
+  color: #dfd8c8;
+  transition: 1s;
+  margin-top: 0
+}
+
+@media (max-width: 992px) {
+  .imageBlocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin-left: 40px;
+  }
+  
+  .item {
+    width: 250px;
+    height: 350px;
+    margin: 20px;
+    outline: #E2C765 solid 2px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grunge {
+    height: 200px;
+    width: 100vw;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .shopTag {
+    color: #FFFFFF;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .shopTagSub {
+    color: #FFFFFF;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .plusMinus {
+    outline: #9C0000;
+    color: #9C0000;
+    box-shadow: none;
+    background-color: none;
+    margin-top: 10px;
+  }
+  
+  .plusMinusRow {
+    display: flex;
+    flex-direction: column;
+    background-color: none;
+    width: 30px;
+    height: 50px;
+    margin-top: 7px;
+  }
+  
+  .qty {
+    background-color: none;
+    border: none;
+    width: 40px;
+    height: 30px;
+    font-size: 30px;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: -5px;
+    text-align: center;
+    margin-left: -8px;
+    border-bottom: black solid 2px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+  }
+  
+  .cutName {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .price{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+  
+  .itemLabel {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+}
+
+.mainLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 75px;
+  margin-top: 50px;
+}
+
+.mainTag {
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 96px;
+  max-width: 75vw;
+  font-weight: bold;
+}
+
+.mainSubTag {
+  color: #ffffff;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.mainButton {
+  width: 100px;
+  height: 50px;
+  background-color: #9C0000;
+  font-size: 24px;
+  color:#ffffff;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-family: 'Gothic A1', sans-serif;
+  font-weight: bold;
+}
+
+
+

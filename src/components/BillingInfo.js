@@ -3,7 +3,8 @@ const BillingInfo = (props) => {
 
     return (
         <div className='billingInfo'>
-            <div className='billingInfo'>
+            <h1>Billing Info</h1>
+            <div>
                 <h3>Ship to Street Address</h3>
                 <input required className='input billingInput' value={props.shipToAddress} onChange={e => props.setShipToAddress(e.target.value)}  />
                 <h3>Ship to City</h3>

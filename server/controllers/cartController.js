@@ -21,8 +21,10 @@ module.exports = {
         return res.status(200).send(cart)
     },
 
-    checkOut: (req, res) => {
-        
+    checkoutCart: async (req, res) => {
+        const db = req.app.get('db')
+        const checkedOutCart = await db.check_out_cart(req.body.cart_id, req.body.user_id)
+        return res.sendStatus(200)
     },
 
     getCart: async (req, res) => {

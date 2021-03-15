@@ -62,6 +62,15 @@ const Checkout = (props) => {
         setBillToZip('')
     }
 
+    const checkout = () => {
+        axios.post('/create-checkout-session')
+            .then(
+                axios.put(`/cart/checkout_cart`,{cart_id: props.cart.cart.cartId, user_id: props.user.user.userId}),
+                props.history.push('/')
+                )
+                .catch(err => console.log(err))
+    }
+
     return (
         <div className='checkoutButtonRow'>
             {step === 1 && <ReviewCart />}
@@ -111,7 +120,7 @@ const Checkout = (props) => {
             />}
             <div>
                 {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
-                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton'>Checkout</button>}
+                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton' onClick={checkout}>Checkout</button>}
             </div>
         </div>
     )

@@ -3,10 +3,10 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
-const stripe = require('stripe')('pk_test_51ITFSzHmJgBX8T7ugcThrwJ3ZZJUN9FtCswilVA4cG4EWtktMuExNQtQGNA8HE7v2Tt62s3ULERj8FftfJIbOLkh00gwkI0lMF')
 
 const app = express()
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, STRIPE_KEY } = process.env
+const stripe = require('stripe')(`${STRIPE_KEY}`)
 const auth = require('./controllers/userController')
 const cart = require('./controllers/cartController')
 const item = require('./controllers/itemController')
@@ -39,8 +39,9 @@ app.post(`/auth/logout`, auth.logout)
 app.post(`/auth/set_address`, auth.setAddress)
 app.get(`/auth/user`, auth.getUser)
 
-app.post('/cart/add_to_cart', cart.addToCart)
 app.put(`/cart/edit_cart`, cart.editCartItem)
+app.put(`/cart/checkout_cart`, cart.checkoutCart)
+app.post('/cart/add_to_cart', cart.addToCart)
 app.get(`/cart/get_cart`, cart.getCart)
 app.delete(`/cart/remove_from_cart`, cart.removeFromCart)
 

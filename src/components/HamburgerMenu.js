@@ -1,9 +1,9 @@
 import React from 'react'
-import HamburgerMenuIcon from '../images/HamburgerMenuIcon.png'
+import WhiteHam from '../images/WhiteHam.png'
 
 const HamburgerMenu = (props) => {
     return (
-        <img className='hamburgerMenu' alt='Hamburger Menu Icon' src={HamburgerMenuIcon} onClick={props.onClick} />
+        <img className='hamburgerMenu' alt='Hamburger Menu Icon' src={WhiteHam} onClick={props.onClick} />
 
     )
 }
