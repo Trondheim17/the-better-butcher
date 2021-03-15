@@ -8,6 +8,7 @@ import { getUser } from '../redux/userReducer'
 import axios from 'axios'
 
 
+
 const Checkout = (props) => {
 
     const [shipToAddress, setShipToAddress] = useState('')
@@ -62,7 +63,7 @@ const Checkout = (props) => {
     }
 
     return (
-        <div>
+        <div className='checkoutButtonRow'>
             {step === 1 && <ReviewCart />}
             {step === 2 && <BillingInfo
                 shipToAddress={shipToAddress}
@@ -86,9 +87,11 @@ const Checkout = (props) => {
                 check={check}
                 uncheck={uncheck}
             />}
-            {step === 3 && <CreditCardInfo />}
-            {step !== 1 ? <button onClick={dec}>{'< Back'}</button> : <button onClick={cancel}>Cancel</button>}
-            {step !== 4 ? <button onClick={inc}>{'Next >'}</button> : <button>Checkout</button>}
+            <div>
+                {step === 3 && <CreditCardInfo />}
+                {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
+                {step !== 4 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton'>Checkout</button>}
+            </div>
         </div>
     )
 }

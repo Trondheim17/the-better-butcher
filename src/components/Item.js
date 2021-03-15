@@ -42,7 +42,7 @@ const Item = (props) => {
             <div className='itemImage' style={{ backgroundImage: `url('http://${cut_image}')` }}></div>
             <div className='itemLabel'>
                 <div className='cutName'>{`${cut_name}`}</div>
-                <p className='price'>{`$ ${price_per_pound}/lb`}</p>
+                <div className='price'>{`$ ${price_per_pound}/lb`}</div>
             </div>
             <div className='itemButtons'>
                 <div className='plusMinusRow' >

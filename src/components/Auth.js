@@ -38,7 +38,7 @@ const Auth = (props) => {
     return (
         <div className='loginMain'>
             <div className='formContainer'>
-                <h2>Log In</h2>
+                <h1>Log In</h1>
                 <div className='form'>
                     <div>
                         <h3>Email</h3>
@@ -51,7 +51,7 @@ const Auth = (props) => {
                     <Button name='Login' onClick={login} />
                 </div>
             </div>
-            <h3 className='or'> - - or - -</h3>
+            <h3 className='or'> - or - </h3>
             <div className='formContainer'>
                 <h2>Register</h2>
                 <div className='form'>

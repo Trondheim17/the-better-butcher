@@ -1,5 +1,5 @@
 * {
-  /* background-color: #E5E5E5; */
+  font-family: 'Gothic A1', sans-serif;
 
 
 }
@@ -15,6 +15,12 @@
   font: black
 }
 
+.main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
 .Logo {
   width: 200px;
   height: 200px;
@@ -22,8 +28,10 @@
 }
 
 .cattleMain {
-  height: 100vh;
-  width: 100vw
+  height: 80vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .mobileNav {
@@ -49,6 +57,7 @@
   width: 25px;
   display: flex;
   align-self: right;
+  margin-right: 20px;
 }
 
 @media (min-width: 992px) {
@@ -72,8 +81,8 @@
   transition-duration: 0.4s;
   font-family: 'Gothic A1', sans-serif;
   text-transform: uppercase;
-  width: 125px;
-  height: 50px;
+  width: 90px;
+  height: 45px;
   margin-left: 25px;
   margin-right: 25px;
   border: none;
@@ -89,13 +98,14 @@
 }
 
 .loginMain {
-  width: 100vw;
+  width: 90vw;
   height: 90vh;
-  /* margin-top: 10vh; */
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   font-family: 'Gothic A1', sans-serif;
+  margin-left: 65px;
 }
 
 .input {
@@ -104,6 +114,11 @@
   /* margin: 5px; */
   width: 275px;
   height: 50px;
+}
+
+.billingInput {
+  width: 500px;
+
 }
 
 .form {
@@ -128,9 +143,8 @@ h3 {
 }
 
 .formContainer {
-  width: 40vw;
+  width: 35vw;
   height: 90vh;
-  margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,13 +160,21 @@ h3 {
   }
 
   .or {
-    margin-top: 0px;
+    font-family: 'Gothic A1', sans-serif;
   }
 
   .formContainer {
     justify-content: initial;
     height: 35vh;
     margin: 15px
+  }
+
+  .billingInput {
+    width: 300px
+  }
+
+  .footer {
+    position: fixed;
   }
 }
 
@@ -179,13 +201,16 @@ h3 {
 .imageBlocks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  margin-left: 70px;
 }
 
 .item {
   width: 250px;
   height: 350px;
-  margin-bottom: 25px;
+  margin: 20px;
   outline: #E2C765 solid 2px;
   display: flex;
   justify-content: center;
@@ -234,14 +259,26 @@ h3 {
   align-items: center;
 }
 
-.addToCartButton {
+.addOrRemoveButton {
   background-color: #9C0000 ;
   color: #ffffff;
   border: none;
   box-shadow: none;
-  width: 175px;
+  width: 160px;
   height: 45px;
   margin-top: 5px;
+  font-weight: bold;
+}
+
+.checkoutButton {
+  background-color: #9C0000 ;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+  width: 100px;
+  height: 45px;
+  margin: 20px;
+  font-weight: bold;
 }
 
 .plusMinus {
@@ -282,12 +319,14 @@ h3 {
   font-weight: 800;
   text-transform: uppercase;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .price{
   font-family: 'Gothic A1', sans-serif;
   font-weight: lighter;
   font-size: 15px;
+  margin-bottom: 3px;
 }
 
 .itemLabel {
@@ -331,4 +370,29 @@ h3 {
   text-align: center;
   font-weight: lighter;
   margin-left: 75px;
+}
+
+.billingInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.checkoutButtonRow {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.checkboxInfo {
+  display: flex;
+  margin: 10px;
+}
+
+.checkboxDescription {
+  margin-left: 5px;
+  margin-bottom: -3px;
 }

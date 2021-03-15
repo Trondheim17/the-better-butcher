@@ -3,10 +3,12 @@ const ItemInReview = (props) => {
     return (
         <div className='item'>
             <div className='itemImage' style={{ backgroundImage: `url('http://${cut_image}')` }}></div>
-            <div>{`${cut_name}`}</div>
-            <p>{`$ ${price_per_pound}/lb`}</p>
-            <p>{`${qty}`}</p>
-            <p>{`Item total: $${qty * price_per_pound}`}</p>
+            <div className='itemLabel'>
+                <div className='cutName'>{`${cut_name}`}</div>
+                <div className='price'>{`$ ${price_per_pound}/lb`}</div>
+                <div className='price'>{`Qty: ${qty}`}</div>
+                <div className='price'>{`Item Total: $${qty * price_per_pound}`}</div>
+            </div>
         </div>
     )
 
