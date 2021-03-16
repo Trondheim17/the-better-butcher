@@ -14,17 +14,17 @@ const CreditCardInfo = (props) => {
     return (
         <div className='orderReview'>
             <h2>Review Order Info</h2>
-            <div>Ship To Address:</div>
-            <div>
-                <div>{`${props.user.user.firstName} ${props.user.user.lastName}`}</div>
-                <div>{`${props.shipToAddress}`}</div>
-                <div>{`${props.shipToCity}, ${props.shipToState} ${props.shipToZip}`}</div>
+            <h3 className='addressHeader'>Ship To Address:</h3>
+            <div className='addressBlock'>
+                <div className='addressBlockLine'>{`${props.user.user.firstName} ${props.user.user.lastName}`}</div>
+                <div className='addressBlockLine'>{`${props.shipToAddress}`}</div>
+                <div className='addressBlockLine'>{`${props.shipToCity}, ${props.shipToState} ${props.shipToZip}`}</div>
             </div>
-            <div>Bill To Address:</div>
-            <div>
-                <div>{`${props.user.user.first_name} ${props.user.user.last_name}`}</div>
-                <div>{`${props.billToAddress}`}</div>
-                <div>{`${props.billToCity}, ${props.billToState} ${props.billToZip}`}</div>
+            <h3 className='addressHeader'>Bill To Address:</h3>
+            <div className='addressBlock'>
+                <div className='addressBlockLine'>{`${props.user.user.firstName} ${props.user.user.lastName}`}</div>
+                <div className='addressBlockLine'>{`${props.billToAddress}`}</div>
+                <div className='addressBlockLine'>{`${props.billToCity}, ${props.billToState} ${props.billToZip}`}</div>
 
             </div>
             <div className='cartItems'>

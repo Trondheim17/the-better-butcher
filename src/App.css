@@ -681,3 +681,17 @@ h3 {
 .selectStateDropDown {
   font-family: 'Gothic A1', sans-serif;
 }
+
+.addressHeader {
+  margin-left: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.addressBlock {
+  margin-left: 75px;
+}
+
+.addressBlockLine {
+  font-family: 'Gothic A1', sans-serif;
+}

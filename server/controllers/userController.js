@@ -1,6 +1,11 @@
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer')
+require('dotenv').config()
+
+const { EMAIL, EMAILPASS } = process.env
 
 module.exports = {
+
     register: async (req, res) => {
         const db = req.app.get('db')
         const { firstName, lastName, email, password } = req.body
@@ -21,6 +26,31 @@ module.exports = {
             password: newUser.password,
             cartId
         }
+
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: EMAIL,
+                pass: EMAILPASS
+            }
+        })
+
+        let message = {
+            from: 'thebetterbutcher.app@gmail.com',
+            to: req.session.user.email,
+            subject: 'Welcome to The Better Butcher',
+            text: `Welcome ${req.session.user.firstName} to the Better Butcher. You're now a part of a community that values quality and sustainability. We are happy to have you and hope you enjoy our products.`
+        }
+
+        transporter.sendMail(message, function (err) {
+            if (err) {
+                console.log(err)
+                res.sendStatus(500)
+            } else {
+                console.log('Email Sent Successfully')
+                res.sendStatus(200)
+            }
+        })
         res.status(200).send(req.session.user)
     },
 
@@ -59,7 +89,7 @@ module.exports = {
         }
     },
 
-    setAddress: async (req,res) => {
+    setAddress: async (req, res) => {
         console.log(req.body)
         const db = req.app.get('db')
         const { shipToAddress, shipToCity, shipToState, shipToZip, billToAddress, billToCity, billToState, billToZip, user_id } = req.body
