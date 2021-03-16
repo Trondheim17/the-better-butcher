@@ -1,14 +1,15 @@
-import { Elements } from '@stripe/react-stripe-js';
-import { useState } from 'react'
-import { loadStripe } from '@stripe/stripe-js';
-import { CardElement } from '@stripe/react-stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
+// import { useState } from 'react'
+// import { loadStripe } from '@stripe/stripe-js';
+// import { CardElement } from '@stripe/react-stripe-js';
 import { connect } from 'react-redux'
 import ItemInReview from './ItemInReview'
+import {withRouter} from 'react-router-dom'
 require('dotenv').config()
 
 const CreditCardInfo = (props) => {
 
-    const [stripePromise, setStripePromise] = useState(() => loadStripe(process.env.STRIPE_KEY))
+    // const [stripePromise, setStripePromise] = useState(() => loadStripe(process.env.STRIPE_KEY))
     console.log(process.env.STRIPE_KEY)
 
     return (
@@ -65,4 +66,4 @@ const mapStateToProps = (state) => {
     return { ...state }
 }
 
-export default connect(mapStateToProps)(CreditCardInfo)
+export default withRouter(connect(mapStateToProps)(CreditCardInfo))

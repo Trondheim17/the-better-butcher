@@ -8,6 +8,7 @@ import Shop from './components/Shop'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import About from './components/About'
+import Thanks from './components/Thanks'
 
 export default (
     <Switch>
@@ -49,6 +50,12 @@ export default (
             <About />
             <Footer />
         </Route>
+        <Route path='/thanks'>
+            <Header />
+            <Thanks />
+            <Footer />
+        </Route>
+
     </Switch>
 
 )

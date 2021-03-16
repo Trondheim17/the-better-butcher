@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ReviewCart from './ReviewCart'
 import BillingInfo from './BillingInfo'
 import CreditCardInfo from './CreditCardInfo'
@@ -24,6 +24,10 @@ const Checkout = (props) => {
     const [isChecked, setIsChecked] = useState(false)
 
     const [step, setStep] = useState(1)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const inc = () => {
         switch (step) {
@@ -63,67 +67,65 @@ const Checkout = (props) => {
     }
 
     const checkout = () => {
-        axios.post('/create-checkout-session')
-            .then(
-                axios.put(`/cart/checkout_cart`,{cart_id: props.cart.cart.cartId, user_id: props.user.user.userId}),
-                props.history.push('/')
+        axios.put(`/cart/checkout_cart`, { cart_id: props.cart.cart.cartId, user_id: props.user.user.userId })
+            .then(props.history.push('/thanks')
                 )
-                .catch(err => console.log(err))
+                .catch (err => console.log(err))
     }
 
-    return (
-        <div className='checkoutButtonRow'>
-            {step === 1 && <ReviewCart />}
-            {step === 2 && <BillingInfo
-                shipToAddress={shipToAddress}
-                setShipToAddress={setShipToAddress}
-                shipToCity={shipToCity}
-                setShipToCity={setShipToCity}
-                shipToState={shipToState}
-                setShipToState={setShipToState}
-                shipToZip={shipToZip}
-                setShipToZip={setShipToZip}
-                billToAddress={billToAddress}
-                setBillToAddress={setBillToAddress}
-                billToCity={billToCity}
-                setBillToCity={setBillToCity}
-                billToState={billToState}
-                setBillToState={setBillToState}
-                billToZip={billToZip}
-                setBillToZip={setBillToZip}
-                isChecked={isChecked}
-                setIsChecked={setIsChecked}
-                check={check}
-                uncheck={uncheck}
-            />}
-            {step === 3 && <CreditCardInfo
-                shipToAddress={shipToAddress}
-                setShipToAddress={setShipToAddress}
-                shipToCity={shipToCity}
-                setShipToCity={setShipToCity}
-                shipToState={shipToState}
-                setShipToState={setShipToState}
-                shipToZip={shipToZip}
-                setShipToZip={setShipToZip}
-                billToAddress={billToAddress}
-                setBillToAddress={setBillToAddress}
-                billToCity={billToCity}
-                setBillToCity={setBillToCity}
-                billToState={billToState}
-                setBillToState={setBillToState}
-                billToZip={billToZip}
-                setBillToZip={setBillToZip}
-                isChecked={isChecked}
-                setIsChecked={setIsChecked}
-                check={check}
-                uncheck={uncheck}
-            />}
-            <div>
-                {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
-                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton' onClick={checkout}>Place Order</button>}
-            </div>
+return (
+    <div className='checkoutButtonRow'>
+        {step === 1 && <ReviewCart />}
+        {step === 2 && <BillingInfo
+            shipToAddress={shipToAddress}
+            setShipToAddress={setShipToAddress}
+            shipToCity={shipToCity}
+            setShipToCity={setShipToCity}
+            shipToState={shipToState}
+            setShipToState={setShipToState}
+            shipToZip={shipToZip}
+            setShipToZip={setShipToZip}
+            billToAddress={billToAddress}
+            setBillToAddress={setBillToAddress}
+            billToCity={billToCity}
+            setBillToCity={setBillToCity}
+            billToState={billToState}
+            setBillToState={setBillToState}
+            billToZip={billToZip}
+            setBillToZip={setBillToZip}
+            isChecked={isChecked}
+            setIsChecked={setIsChecked}
+            check={check}
+            uncheck={uncheck}
+        />}
+        {step === 3 && <CreditCardInfo
+            shipToAddress={shipToAddress}
+            setShipToAddress={setShipToAddress}
+            shipToCity={shipToCity}
+            setShipToCity={setShipToCity}
+            shipToState={shipToState}
+            setShipToState={setShipToState}
+            shipToZip={shipToZip}
+            setShipToZip={setShipToZip}
+            billToAddress={billToAddress}
+            setBillToAddress={setBillToAddress}
+            billToCity={billToCity}
+            setBillToCity={setBillToCity}
+            billToState={billToState}
+            setBillToState={setBillToState}
+            billToZip={billToZip}
+            setBillToZip={setBillToZip}
+            isChecked={isChecked}
+            setIsChecked={setIsChecked}
+            check={check}
+            uncheck={uncheck}
+        />}
+        <div>
+            {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
+            {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton' onClick={checkout}>Place Order</button>}
         </div>
-    )
+    </div>
+)
 }
 
 const mapStateToProps = (state) => {
