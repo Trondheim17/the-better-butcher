@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { withRouter,  Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Button from './Button'
 import HamburgerMenu from './HamburgerMenu'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import { logoutUser } from '../redux/userReducer'
 
 const Nav = (props) => {
     const [toggle, setToggle] = useState(false)
+    // const [qtyInCart, setQtyInCart] = useState(0)
 
     function toggleMenu() {
         return setToggle(!toggle)
@@ -19,8 +20,9 @@ const Nav = (props) => {
                 () => props.logoutUser(),
                 console.log(props),
                 props.history.push('/')
-                )
+            )
     }
+
 
     return (
         <div className='nav'>
@@ -34,7 +36,7 @@ const Nav = (props) => {
                         <Button toggle={toggle} name='Shop'></Button>
                     </Link>
                     {props.user.email && <Link to={'/cart'}>
-                        <Button toggle={toggle} name='Cart'></Button>
+                        <Button toggle={toggle} name={`Cart (${props.cart.length})`}></Button>
                     </Link>}
                     {!props.user.email ? <Link to={'/login'}>
                         <Button toggle={toggle} name='Login'></Button>
@@ -48,7 +50,10 @@ const Nav = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return { user: state.user.user }
+    return {
+        user: state.user.user,
+        cart: state.cart.cart
+    }
 }
 
 export default withRouter(connect(mapStateToProps, { logoutUser })(Nav))

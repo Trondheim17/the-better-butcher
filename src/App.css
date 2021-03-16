@@ -23,7 +23,7 @@ h2 {
   flex-direction: row;
   background-color: #111111;
   height: 12vh;
-  width: 100vw;
+  max-width: 100v%;
   font: black
 }
 
@@ -39,6 +39,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-top: 92px;
+  max-width: 100%;
 }
 
 .Logo {
@@ -53,6 +54,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: 70px;
+  margin-top: -6px;
 }
 
 .cattleMain2 {
@@ -280,8 +282,8 @@ h3 {
 
 .cart {
   margin-top: 100px;
-  width: 95vw;
-  height: 80vh;
+  width: 95%;
+  height: 80%;
 }
 
 .cartItems {
@@ -695,3 +697,4 @@ h3 {
 .addressBlockLine {
   font-family: 'Gothic A1', sans-serif;
 }
+

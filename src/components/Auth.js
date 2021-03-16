@@ -20,6 +20,7 @@ const Auth = (props) => {
                 props.history.push(`/`)
             })
             .catch(err => {
+                alert('Invalid Login Attempt. Please Try Again.')
                 console.log(err)
             })
     }
