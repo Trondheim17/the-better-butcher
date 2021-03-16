@@ -33,7 +33,7 @@ const CreditCardInfo = (props) => {
                 })}
             </div>
             <h2>Enter Credit Card Information</h2>
-            <Elements stripe={stripePromise}>
+            {/* <Elements stripe={stripePromise}>
                 <CardElement
                     options={{
                         style: {
@@ -50,7 +50,13 @@ const CreditCardInfo = (props) => {
                         },
                     }}
                 />
-            </Elements>
+            </Elements> */}
+            <div className='ccblock'>
+                <input placeholder='Credit Card Number' className='input'></input>
+                <input placeholder='CVV' className='input cvv'></input>
+                <input placeholder='EXP' className='input date'></input>
+            </div>
+
         </div>
     )
 }

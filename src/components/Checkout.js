@@ -120,7 +120,7 @@ const Checkout = (props) => {
             />}
             <div>
                 {step !== 1 ? <button className='checkoutButton' onClick={dec}>{'< Back'}</button> : <button className='checkoutButton' onClick={cancel}>Cancel</button>}
-                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton' onClick={checkout}>Checkout</button>}
+                {step !== 3 ? <button className='checkoutButton' onClick={inc}>{'Next >'}</button> : <button className='checkoutButton' onClick={checkout}>Place Order</button>}
             </div>
         </div>
     )
