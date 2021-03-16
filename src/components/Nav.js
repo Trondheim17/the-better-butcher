@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { withRouter,  Link } from 'react-router-dom'
 import Button from './Button'
 import HamburgerMenu from './HamburgerMenu'
 import axios from 'axios'
@@ -15,7 +15,11 @@ const Nav = (props) => {
 
     function logOut() {
         axios.post('/auth/logout')
-            .then(() => props.logoutUser())
+            .then(
+                () => props.logoutUser(),
+                console.log(props),
+                props.history.push('/')
+                )
     }
 
     return (
@@ -47,4 +51,4 @@ const mapStateToProps = (state) => {
     return { user: state.user.user }
 }
 
-export default connect(mapStateToProps, { logoutUser })(Nav)
+export default withRouter(connect(mapStateToProps, { logoutUser })(Nav))

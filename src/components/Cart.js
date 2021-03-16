@@ -17,7 +17,7 @@ const Cart = (props) => {
                     return <ItemInCart key={cut.cut_id} cut={cut} />
                 })}
             </div>
-            <button onClick={checkout} >Checkout</button>
+            <button className='checkoutButton' onClick={checkout} >Checkout</button>
         </div>
     )
 

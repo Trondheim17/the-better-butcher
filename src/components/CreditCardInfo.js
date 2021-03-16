@@ -10,15 +10,10 @@ const CreditCardInfo = (props) => {
 
     const [stripePromise, setStripePromise] = useState(() => loadStripe(process.env.STRIPE_KEY))
     console.log(process.env.STRIPE_KEY)
-    
+
     return (
         <div className='orderReview'>
             <h2>Review Order Info</h2>
-            <div className='cartItems'>
-                {props.cart.cart.map((cut) => {
-                    return <ItemInReview key={cut.cut_id} cut={cut} />
-                })}
-            </div>
             <div>Ship To Address:</div>
             <div>
                 <div>{`${props.user.user.firstName} ${props.user.user.lastName}`}</div>
@@ -31,6 +26,11 @@ const CreditCardInfo = (props) => {
                 <div>{`${props.billToAddress}`}</div>
                 <div>{`${props.billToCity}, ${props.billToState} ${props.billToZip}`}</div>
 
+            </div>
+            <div className='cartItems'>
+                {props.cart.cart.map((cut) => {
+                    return <ItemInReview key={cut.cut_id} cut={cut} />
+                })}
             </div>
             <h2>Enter Credit Card Information</h2>
             <Elements stripe={stripePromise}>

@@ -4,6 +4,18 @@
 
 }
 
+h1 {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .Header {
   display: flex;
   justify-content: space-between;
@@ -15,9 +27,18 @@
   font: black
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-top: 92px;
 }
 
 .Logo {
@@ -27,10 +48,19 @@
 }
 
 .cattleMain {
-  height: 100vh;
+  height: 78vh;
+  max-width: 100vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 70px;
+}
+
+.cattleMain2 {
+  height: 61.8vh;
   width: 100vw;
   background-repeat: no-repeat;
   background-size: contain;
+  margin-left: 355px;
 }
 
 .mobileNav {
@@ -123,6 +153,7 @@
 }
 
 .loginMain {
+  margin-top: 70px;
   width: 90vw;
   height: 90vh;
   display: flex;
@@ -205,14 +236,6 @@ h3 {
   }
 }
 
-
-.footer {
-  height: 10vh;
-  width: 100vw;
-  background-color: #9a0606;
-}
-
-
 .itemImage {
   width: 200px;
   height: 200px;
@@ -256,6 +279,7 @@ h3 {
 
 
 .cart {
+  margin-top: 100px;
   width: 95vw;
   height: 80vh;
 }
@@ -272,6 +296,7 @@ h3 {
 }
 
 .reviewCart {
+  margin-top: 100px;
   height: 100vh;
   width: 100 vw;
 }
@@ -281,6 +306,11 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 10vh;
+  width: 100vw;
+  background-color: #9a0606;
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 12px;
 }
 
 .addOrRemoveButton {
@@ -369,6 +399,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 92px;
 }
 
 .shopTag {
@@ -397,6 +428,7 @@ h3 {
 }
 
 .billingInfo {
+  margin-top: 120px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -422,6 +454,8 @@ h3 {
 }
 
 .orderReview {
+  margin-left: 20px;
+  margin-top: 100px;
   width: 100vw;
   height: 100vh;
 }
@@ -581,5 +615,69 @@ h3 {
   font-weight: bold;
 }
 
+.footerButton {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: 12px;
+  background-color: transparent;
+  outline: none;
+  border: none;
 
+}
 
+.home {
+  margin-right: -6px;
+}
+
+.about {
+  margin-top: 98px;
+  height: 78vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutTag {
+  font-family: 'Oswald', sans-serif;
+  font-size: 76px;
+  max-width: 1200px;
+  margin-top: -150px;
+  text-align: center;
+}
+
+.aboutSubTag {
+  display: flex;
+  margin-top: 50px;
+  margin-left: 500px;
+}
+
+.aboutName {
+  font-size: 36px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.aboutTitle {
+  font-size: 36px;
+  font-family: 'Oswald', sans-serif;
+  padding-left: 10px;
+  font-style: italics;
+}
+
+.checkboxDescription {
+  font-family: 'Gothic A1', sans-serif;
+  margin-top: 3px;
+}
+
+.stateSelectInfo {
+  font-family: 'Gothic A1', sans-serif;
+  margin-right: 10px;
+}
+
+.stateSelector {
+  margin-top: 10px;
+}
+
+.selectStateDropDown {
+  font-family: 'Gothic A1', sans-serif;
+}

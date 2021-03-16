@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 const Header = () => {
     return (
-        <div className='Header' >
+        <div className='Header sticky' >
             <Logo />
             <div className='nav'>
                 <Nav />

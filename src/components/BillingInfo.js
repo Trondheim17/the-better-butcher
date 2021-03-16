@@ -9,9 +9,9 @@ const BillingInfo = (props) => {
                 <input required className='input billingInput' value={props.shipToAddress} onChange={e => props.setShipToAddress(e.target.value)}  />
                 <h3>Ship to City</h3>
                 <input required className='input billingInput' value={props.shipToCity} onChange={e => props.setShipToCity(e.target.value)} />
-                <div>
-                    <label htmlFor='State'>Select Ship to State</label>
-                    <select name='State' id='State' value={props.shipToState} onChange={e => props.setShipToState(e.target.value)}>
+                <div className='stateSelector'>
+                    <label className='stateSelectInfo' htmlFor='State'>Select Ship to State</label>
+                    <select className='selectStateDropDown' name='State' id='State' value={props.shipToState} onChange={e => props.setShipToState(e.target.value)}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -77,9 +77,9 @@ const BillingInfo = (props) => {
                 <input required className='input billingInput' value={props.billToAddress} onChange={e => props.setBillToAddress(e.target.value)} disabled={props.isChecked && true} />
                 <h3>Bill to City</h3>
                 <input required className='input billingInput' value={props.billToCity} onChange={e => props.setBillToCity(e.target.value)} disabled={props.isChecked && true} />
-                <div>
-                    <label htmlFor='State'>Select Bill to State</label>
-                    <select name='State' id='State' value={props.billToState} onChange={e => props.setBillToState(e.target.value)} disabled={props.isChecked && true}>
+                <div className='stateSelector'>
+                    <label className='stateSelectInfo' htmlFor='State'>Select Bill to State</label>
+                    <select className='selectStateDropDown' name='State' id='State' value={props.billToState} onChange={e => props.setBillToState(e.target.value)} disabled={props.isChecked && true}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>

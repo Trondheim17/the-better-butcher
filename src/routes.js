@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Shop from './components/Shop'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
+import About from './components/About'
 
 export default (
     <Switch>
@@ -41,6 +42,11 @@ export default (
         <Route path='/checkout'>
             <Header />
             <Checkout />
+            <Footer />
+        </Route>
+        <Route path='/about'>
+            <Header />
+            <About />
             <Footer />
         </Route>
     </Switch>
