@@ -4,6 +4,10 @@
 
 }
 
+#page {
+  visibility: visible !important;
+  }
+
 h1 {
   font-family: 'Gothic A1', sans-serif;
   font-size: 24px;
